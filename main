@@ -1,0 +1,119 @@
+import java.util.Scanner;
+
+
+public class Main {
+
+    private Scanner input = new Scanner(System.in);
+    private Store store;
+
+    public static void main(String[] args) {
+        System.out.println("Welcome to campus physical test management system!" +
+                "₍˄·͈༝·͈˄*₎◞ ̑̑");
+
+        Main main = new Main();
+        main.login();
+        main.setup();
+        main.choice();
+
+    }
+
+    ///////////////////////////////////////////////////////
+
+    private void login() {
+        System.out.print("Please enter your username");
+        input.nextLine();
+        System.out.print("Please enter your password");
+        input.nextLine();
+        System.out.print("""
+                 The current location is detected correctly.
+                   Checking-in successfully........
+                """);
+        input.nextLine();
+    }
+    private int mainMenu() {
+        System.out.print("""
+                    Menu
+                ---------
+                   1) Store
+                   2) Sports records
+                   3) Check-in
+                   0) Exit
+                ==>> """);
+        int option = input.nextInt();
+        return option;
+    }
+    ////////////////////////////////////
+    private void choice(){
+        int option = mainMenu();
+
+        while (option != 0){
+
+            switch (option){
+                case 1 -> addAItem();
+                case 2 -> printAllItems();
+                case 3 -> findAItem();
+                default -> System.out.println("Invalid option entered: " + option);
+            }
+
+            //pause the program so that the user can read what we just printed to the terminal window
+            System.out.println("\nPress enter key to continue...");
+            input.nextLine();
+            input.nextLine(); //second read is required - bug in Scanner class; a String read is ignored straight after reading an int.
+
+            //display the main menu again
+            option = mainMenu();
+        }
+
+        //the user chose option 0, so exit the program
+        System.out.println("Exiting...bye bye");
+        System.exit(0);
+    }
+
+    private void findAItem() {
+        input.nextLine();
+
+        System.out.print("Please Enter a Item Name to Find : ");
+        String itemName = input.nextLine();
+
+        Item foundItem = store.find(itemName);
+
+        if (foundItem != null) {
+            System.out.println("The found Thing is:  " + foundItem);
+        }
+        else{
+            System.out.println("There are no Things with the name [" + itemName + "] in the Shop.");
+        }
+    }
+
+
+    private void addAItem(){
+        input.nextLine();  //dummy read of String to clear the buffer - bug in Scanner class.
+
+        System.out.print("Enter the Item Name:  ");
+        String itemName = input.nextLine();
+        System.out.print("Enter the Price:  ");
+        double itemPrice = input.nextDouble();
+
+        Item temp = new Item(itemName, itemPrice);
+        boolean isAdded = store.add(temp);
+        if (isAdded){
+            System.out.println("Yoke Added Successfully");
+        }
+        else{
+            System.out.println("No Item Added");
+        }
+    }
+
+    private void printAllItems() {
+        System.out.println("List of Items are:");
+        System.out.println(store.list());
+    }
+
+    private void setup(){
+        //find out from the user how many products they would like to order
+        System.out.print("How many Items would you like to have in your Store?  ");
+        int numberProducts = input.nextInt();
+        store = new Store(numberProducts);
+    }
+///////////////////////////////////////////////////////
+
