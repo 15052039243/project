@@ -12,12 +12,9 @@ public class Main {
         main.setup();
         main.choice();
     }
-
-    ///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
     private void setup() {
-        System.out.print("What do you want to do?Make a choice.Please write a number.");
-        int numberProducts = input.nextInt();
-        store = new Store(numberProducts);
+        System.out.print("What do you want to do?Make a choice.");
     }
 
     private void login() {
@@ -35,6 +32,7 @@ public class Main {
 
     private int mainMenu() {
         System.out.print("""
+                    
                     Menu
                 ---------
                    1) Store
@@ -96,9 +94,8 @@ public class Main {
 
     private void choice0() {
         int option = Menu();
-        while (option != 0) {
-
             switch (option) {
+                case 0 -> choice();
                 case 1 -> choice1();
                 case 2 -> choice1();
                 case 3 -> choice1();
@@ -113,9 +110,8 @@ public class Main {
             input.nextLine();
             input.nextLine();
             option = Menu();
-        }
+
         System.out.println("Exiting...bye bye");
-        System.exit(0);
 
     }
 
@@ -154,11 +150,5 @@ public class Main {
             option = back();
         }
 
-
-///////////////////////////////////////////////////////
-    }
-}
-
-///////////////////////////////////////////////////////
     }
 }
