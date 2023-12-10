@@ -7,8 +7,7 @@ public class Main {
     private Store store;
 
     public static void main(String[] args) {
-        System.out.println("Welcome to campus physical test management system!" +
-                "₍˄·͈༝·͈˄*₎◞ ̑̑");
+        System.out.println("Welcome to campus physical test management system!    ₍˄·͈༝·͈˄*₎◞ ̑̑");
 
         Main main = new Main();
         main.login();
@@ -49,9 +48,9 @@ public class Main {
         while (option != 0){
 
             switch (option){
-                case 1 -> addAItem();
-                case 2 -> printAllItems();
-                case 3 -> findAItem();
+                case 1 -> findAItem();
+                case 2 -> record();
+                case 3 -> checkin();
                 default -> System.out.println("Invalid option entered: " + option);
             }
 
@@ -70,23 +69,23 @@ public class Main {
     }
 
     private void findAItem() {
-        input.nextLine();
-
-        System.out.print("Please Enter a Item Name to Find : ");
-        String itemName = input.nextLine();
-
-        Item foundItem = store.find(itemName);
-
-        if (foundItem != null) {
-            System.out.println("The found Thing is:  " + foundItem);
-        }
-        else{
-            System.out.println("There are no Things with the name [" + itemName + "] in the Shop.");
-        }
+        System.out.print("""
+                    Menu
+                1.basketball    120rmb/each
+                2.football      100rmb/each
+                3.table tennis bats 80rmb/each pair
+                4.battledore    100rmb/each pair
+                5.sneaker       150rmb/each pair
+                6.solid ball    30rmb/each
+                7.a swimming outfit(contain 
+                
+                 
+                 
+                 //          """);
     }
 
 
-    private void addAItem(){
+    private void record(){
         input.nextLine();  //dummy read of String to clear the buffer - bug in Scanner class.
 
         System.out.print("Enter the Item Name:  ");
@@ -97,14 +96,14 @@ public class Main {
         Item temp = new Item(itemName, itemPrice);
         boolean isAdded = store.add(temp);
         if (isAdded){
-            System.out.println("Yoke Added Successfully");
+            System.out.println("Item Added Successfully");
         }
         else{
             System.out.println("No Item Added");
         }
     }
 
-    private void printAllItems() {
+    private void checkin() {
         System.out.println("List of Items are:");
         System.out.println(store.list());
     }
@@ -114,6 +113,10 @@ public class Main {
         System.out.print("How many Items would you like to have in your Store?  ");
         int numberProducts = input.nextInt();
         store = new Store(numberProducts);
+    }
+///////////////////////////////////////////////////////
+
+}
     }
 ///////////////////////////////////////////////////////
 
