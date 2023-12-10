@@ -110,9 +110,6 @@ public class Main {
             input.nextLine();
             input.nextLine();
             option = Menu();
-
-        System.out.println("Exiting...bye bye");
-
     }
 
     private int Choice() {
@@ -149,6 +146,5 @@ public class Main {
             input.nextLine();
             option = back();
         }
-
     }
 }
