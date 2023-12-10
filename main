@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 public class Main {
 
     private Scanner input = new Scanner(System.in);
@@ -8,12 +7,10 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.print("Welcome to campus physical test management system!    ₍˄·͈༝·͈˄*₎◞ ̑̑");
-
         Main main = new Main();
         main.login();
         main.setup();
         main.choice();
-
     }
 
     ///////////////////////////////////////////////////////
@@ -48,8 +45,6 @@ public class Main {
         int option = input.nextInt();
         return option;
     }
-
-    ////////////////////////////////////
     private void choice() {
         int option = mainMenu();
 
@@ -136,7 +131,7 @@ public class Main {
     }
 
     private int back() {
-        System.out.print("Please enter 0 to come back.");
+        System.out.print("Please enter 1 to come back.");
         int option = input.nextInt();
         return option;
 
@@ -159,6 +154,10 @@ public class Main {
             option = back();
         }
 
+
+///////////////////////////////////////////////////////
+    }
+}
 
 ///////////////////////////////////////////////////////
     }
