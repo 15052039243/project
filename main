@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Main {
 
     private Scanner input = new Scanner(System.in);
-    private Store store;
 
     public static void main(String[] args) {
         System.out.print("Welcome to campus physical test management system!    ₍˄·͈༝·͈˄*₎◞ ̑̑");
@@ -19,10 +18,13 @@ public class Main {
 
     private void login() {
         input.nextLine();
+
         System.out.print("Please enter your username");
         input.nextLine();
+
         System.out.print("Please enter your password");
         input.nextLine();
+
         System.out.print("""
                  The current location is detected correctly.
                    Checking-in successfully........
@@ -66,14 +68,16 @@ public class Main {
 
     private int Menu() {
         System.out.print("""
-                    Menu
-                1).basketball    120rmb/each
-                2).football      100rmb/each
-                3).table tennis bats 80rmb/each pair
-                4).battledore    100rmb/each pair
-                5).sneaker       150rmb/each pair
-                6).solid ball    30rmb/each
-                7).a swimming outfit(contain a swim cap,a swimsuit,a pair of goggles)  80rmb/each 
+                             //Menu//
+                    /Item/               /Price/
+                1).basketball         120rmb/each
+                2).football           100rmb/each
+                3).table tennis bats  80rmb/each pair
+                4).battledore         100rmb/each pair
+                5).sneaker            150rmb/each pair
+                6).solid ball         30rmb/each
+                7).a swimming outfit(contain a swim cap,a swimsuit,a pair of goggles)
+                                      80rmb/each 
                 0).exit
                  // ... """);
         int option = input.nextInt();
@@ -83,14 +87,12 @@ public class Main {
 
     private void choice1() {
         int option = Choice();
-        while (option != 0) {
-
             switch (option) {
                 case 1 -> yes();
                 case 2 -> choice0();
             }
         }
-    }
+
 
     private void choice0() {
         int option = Menu();
@@ -105,8 +107,6 @@ public class Main {
                 case 7 -> choice1();
                 default -> System.out.println("Invalid option entered: " + option);
             }
-
-            System.out.println("\nPress enter key to continue...");
             input.nextLine();
             input.nextLine();
             option = Menu();
@@ -127,24 +127,19 @@ public class Main {
         System.out.print("Please enter 1 to come back.");
         int option = input.nextInt();
         return option;
-
     }
 
     private void yes() {
         System.out.println("The purchase is successful!");
         int option = back();
-        while (option != 0) {
-
             switch (option) {
-                case 1 -> choice();
-                case 2 -> choice();
+                case 1 -> choice0();
+                case 2 -> choice0();
                 default -> System.out.println("Invalid option entered: " + option);
             }
-
-            System.out.println("\nPress enter key to continue...");
             input.nextLine();
             input.nextLine();
             option = back();
-        }
+
     }
 }
