@@ -62,7 +62,11 @@ public class Main {
             input.nextLine();
             option = mainMenu();
         }
-        System.out.println("Exiting...bye bye");
+        System.out.println("""
+                          Exiting....
+                          Hope that you are satisfied with our services.
+                          Bye bye~~
+                          """);
         System.exit(0);
     }
 
