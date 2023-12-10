@@ -7,7 +7,7 @@ public class Main {
     private Store store;
 
     public static void main(String[] args) {
-        System.out.println("Welcome to campus physical test management system!    ₍˄·͈༝·͈˄*₎◞ ̑̑");
+        System.out.print("Welcome to campus physical test management system!    ₍˄·͈༝·͈˄*₎◞ ̑̑");
 
         Main main = new Main();
         main.login();
@@ -17,8 +17,14 @@ public class Main {
     }
 
     ///////////////////////////////////////////////////////
+    private void setup() {
+        System.out.print("What do you want to do?Make a choice.Please write a number.");
+        int numberProducts = input.nextInt();
+        store = new Store(numberProducts);
+    }
 
     private void login() {
+        input.nextLine();
         System.out.print("Please enter your username");
         input.nextLine();
         System.out.print("Please enter your password");
@@ -29,6 +35,7 @@ public class Main {
                 """);
         input.nextLine();
     }
+
     private int mainMenu() {
         System.out.print("""
                     Menu
@@ -41,82 +48,118 @@ public class Main {
         int option = input.nextInt();
         return option;
     }
+
     ////////////////////////////////////
-    private void choice(){
+    private void choice() {
         int option = mainMenu();
 
-        while (option != 0){
+        while (option != 0) {
 
-            switch (option){
-                case 1 -> findAItem();
-                case 2 -> record();
-                case 3 -> checkin();
+            switch (option) {
+                case 1 -> choice0();
+                case 2 -> choice0();
+                case 3 -> choice0();
                 default -> System.out.println("Invalid option entered: " + option);
             }
 
-            //pause the program so that the user can read what we just printed to the terminal window
             System.out.println("\nPress enter key to continue...");
             input.nextLine();
-            input.nextLine(); //second read is required - bug in Scanner class; a String read is ignored straight after reading an int.
-
-            //display the main menu again
+            input.nextLine();
             option = mainMenu();
         }
-
-        //the user chose option 0, so exit the program
         System.out.println("Exiting...bye bye");
         System.exit(0);
     }
 
-    private void findAItem() {
+    private int Menu() {
         System.out.print("""
                     Menu
-                1.basketball    120rmb/each
-                2.football      100rmb/each
-                3.table tennis bats 80rmb/each pair
-                4.battledore    100rmb/each pair
-                5.sneaker       150rmb/each pair
-                6.solid ball    30rmb/each
-                7.a swimming outfit(contain 
-                
-                 
-                 
-                 //          """);
+                1).basketball    120rmb/each
+                2).football      100rmb/each
+                3).table tennis bats 80rmb/each pair
+                4).battledore    100rmb/each pair
+                5).sneaker       150rmb/each pair
+                6).solid ball    30rmb/each
+                7).a swimming outfit(contain a swim cap,a swimsuit,a pair of goggles)  80rmb/each 
+                0).exit
+                 // ... """);
+        int option = input.nextInt();
+        return option;
+
     }
 
+    private void choice1() {
+        int option = Choice();
+        while (option != 0) {
 
-    private void record(){
-        input.nextLine();  //dummy read of String to clear the buffer - bug in Scanner class.
-
-        System.out.print("Enter the Item Name:  ");
-        String itemName = input.nextLine();
-        System.out.print("Enter the Price:  ");
-        double itemPrice = input.nextDouble();
-
-        Item temp = new Item(itemName, itemPrice);
-        boolean isAdded = store.add(temp);
-        if (isAdded){
-            System.out.println("Item Added Successfully");
-        }
-        else{
-            System.out.println("No Item Added");
+            switch (option) {
+                case 1 -> yes();
+                case 2 -> choice0();
+            }
         }
     }
 
-    private void checkin() {
-        System.out.println("List of Items are:");
-        System.out.println(store.list());
+    private void choice0() {
+        int option = Menu();
+        while (option != 0) {
+
+            switch (option) {
+                case 1 -> choice1();
+                case 2 -> choice1();
+                case 3 -> choice1();
+                case 4 -> choice1();
+                case 5 -> choice1();
+                case 6 -> choice1();
+                case 7 -> choice1();
+                default -> System.out.println("Invalid option entered: " + option);
+            }
+
+            System.out.println("\nPress enter key to continue...");
+            input.nextLine();
+            input.nextLine();
+            option = Menu();
+        }
+        System.out.println("Exiting...bye bye");
+        System.exit(0);
+
     }
 
-    private void setup(){
-        //find out from the user how many products they would like to order
-        System.out.print("How many Items would you like to have in your Store?  ");
-        int numberProducts = input.nextInt();
-        store = new Store(numberProducts);
+    private int Choice() {
+        System.out.println("Are you sure to spend money on this item?");
+        System.out.print("""
+                1).Yes
+                2).No
+                 // ... """);
+        int option = input.nextInt();
+        return option;
+
     }
+
+    private int back() {
+        System.out.print("Please enter 0 to come back.");
+        int option = input.nextInt();
+        return option;
+
+    }
+
+    private void yes() {
+        System.out.println("The purchase is successful!");
+        int option = back();
+        while (option != 0) {
+
+            switch (option) {
+                case 1 -> choice();
+                case 2 -> choice();
+                default -> System.out.println("Invalid option entered: " + option);
+            }
+
+            System.out.println("\nPress enter key to continue...");
+            input.nextLine();
+            input.nextLine();
+            option = back();
+        }
+
+
 ///////////////////////////////////////////////////////
-
+    }
 }
-    }
-///////////////////////////////////////////////////////
-
