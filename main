@@ -1,0 +1,149 @@
+import java.util.Scanner;
+
+public class Main {
+
+    private Scanner input = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        System.out.print("Welcome to campus physical test management system!    ₍˄·͈༝·͈˄*₎◞ ̑̑");
+        Main main = new Main();
+        main.login();
+        main.setup();
+        main.choice();
+    }
+///////////////////////////////////////////////////////////////////////////////////////////////////
+    private void setup() {
+        System.out.print("What do you want to do?Make a choice.");
+    }
+
+    private void login() {
+        input.nextLine();
+
+        System.out.print("Please enter your username");
+        input.nextLine();
+
+        System.out.print("Please enter your password");
+        input.nextLine();
+
+        System.out.print("""
+                 The current location is detected correctly.
+                   Checking-in successfully........
+                """);
+        input.nextLine();
+    }
+
+    private int mainMenu() {
+        System.out.print("""
+                    
+                    Menu
+                ---------
+                   1) Store
+                   2) Sports records
+                   3) Check-in
+                   0) Exit
+                ==>> """);
+        int option = input.nextInt();
+        return option;
+    }
+    private void choice() {
+        int option = mainMenu();
+
+        while (option != 0) {
+
+            switch (option) {
+                case 1 -> choice0();
+                case 2 -> choice0();
+                case 3 -> choice0();
+                default -> System.out.println("Invalid option entered: " + option);
+            }
+
+            System.out.println("\nPress enter key to continue...");
+            input.nextLine();
+            input.nextLine();
+            option = mainMenu();
+        }
+        System.out.println("""
+                          Exiting....
+                          Hope that you are satisfied with our services.
+                          Bye bye~~
+                          """);
+        System.exit(0);
+    }
+
+    private int Menu() {
+        System.out.print("""
+                             //Menu//
+                    /Item/               /Price/
+                1).basketball         120rmb/each
+                2).football           100rmb/each
+                3).table tennis bats  80rmb/each pair
+                4).battledore         100rmb/each pair
+                5).sneaker            150rmb/each pair
+                6).solid ball         30rmb/each
+                7).a swimming outfit(contain a swim cap,a swimsuit,a pair of goggles)
+                                      80rmb/each 
+                0).exit
+                 // ... """);
+        int option = input.nextInt();
+        return option;
+
+    }
+
+    private void choice1() {
+        int option = Choice();
+            switch (option) {
+                case 1 -> yes();
+                case 2 -> choice0();
+            }
+        }
+
+
+    private void choice0() {
+        int option = Menu();
+            switch (option) {
+                case 0 -> choice();
+                case 1 -> choice1();
+                case 2 -> choice1();
+                case 3 -> choice1();
+                case 4 -> choice1();
+                case 5 -> choice1();
+                case 6 -> choice1();
+                case 7 -> choice1();
+                default -> System.out.println("Invalid option entered: " + option);
+            }
+            input.nextLine();
+            input.nextLine();
+            option = Menu();
+    }
+
+    private int Choice() {
+        System.out.println("Are you sure to spend money on this item?");
+        System.out.print("""
+                1).Yes
+                2).No
+                 // ... """);
+        int option = input.nextInt();
+        return option;
+
+    }
+
+    private int back() {
+        System.out.print("Please enter 1 to come back.");
+        int option = input.nextInt();
+        return option;
+    }
+
+    private void yes() {
+        System.out.println("The purchase is successful!");
+        int option = back();
+            switch (option) {
+                case 1 -> choice0();
+                case 2 -> choice0();
+                default -> System.out.println("Invalid option entered: " + option);
+            }
+            input.nextLine();
+            input.nextLine();
+            option = back();
+
+    }
+}
