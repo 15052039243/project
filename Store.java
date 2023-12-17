@@ -68,4 +68,18 @@ public class Store {
             System.out.println("Exception caught: " + e.getMessage());
         }
     }
+    public static void storeRecord(String username, double record){
+            try {
+                File file = new File("record.txt");
+                if (!file.exists()) {
+                    file.createNewFile();
+                }
+                FileWriter writer = new FileWriter(file, true);
+                writer.write(username + "," + record + "\n");
+                writer.close();
+            } catch (Exception e) {
+                System.out.println("Exception caught: " + e.getMessage());
+            }
+
+    }
 }
