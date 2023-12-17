@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileWriter;
+
 public class Store {
     private Item[] items;
     private int total = 0;
@@ -5,6 +8,7 @@ public class Store {
     public Store(int numberItems) {
         items = new Item[numberItems];
     }
+
     private boolean isFull() {
         return total == items.length;
     }
@@ -16,8 +20,7 @@ public class Store {
     public boolean add(Item aitem) {
         if (isFull()) {
             return false;
-        }
-        else {
+        } else {
             items[total] = aitem;
             total++;
             return true;
@@ -48,5 +51,21 @@ public class Store {
             return null;
         }
         return foundItem;
+    }
+
+    // 存储用户信息
+    public static void storeUserInfo(String username, String password) {
+        try {
+            File file = new File("users.txt");
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            FileWriter writer = new FileWriter(file, true);
+            writer.write(username + "," + password + "\n");
+            writer.close();
+            System.out.println("User info stored successfully.");
+        } catch (Exception e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        }
     }
 }
