@@ -110,11 +110,6 @@ public class Main{
         int option = input.nextInt();
         return option;
     }
-    private void put(){
-        System.out.print("How many records would you like to add? Write the number and you can open the menu. ");
-        int numberProducts = input.nextInt();
-        store = new Store(numberProducts);
-    }
     private void choice() {
         int option = mainMenu();
 
@@ -125,7 +120,7 @@ public class Main{
                     choice0();
                     break;
                 case 2:
-                    System.out.print("How many records would you like to add? Write the number and you can open the menu. ");
+                    System.out.print("How many records would you like to add? \n");
                     int numberProducts = input.nextInt();
                     int n=numberProducts;
                     store = new Store(numberProducts);
