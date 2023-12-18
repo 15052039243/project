@@ -87,7 +87,8 @@ public class Main {
                 );
             }
         } catch (FileNotFoundException e) {
-            System.out.println("User file not found.");
+            System.out.println("User is not found.Please register.");
+            register();
         }
     }
 
